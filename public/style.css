@@ -8,7 +8,9 @@ body, html {
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100vh;
+    
 }
+
 
 .form-section {
     display: flex;
@@ -16,19 +18,31 @@ body, html {
     align-items: center; /* Center the children horizontally in the container */
     justify-content: center; /* Optional: Center vertically if needed */
     text-align: center; /* Center the text inside the headers */
+    border-right: 3px solid #45a049;
+    margin-right: 1.75rem;
+    line-height: 2rem;
 }
+
+
 
 h1, h2 {
     width: 100%; /* Ensures the headers can be centered properly if needed */
     padding: 10px 0; /* Adds some space around the headers */
+    color:#45a049;
 }
 
+label, h3{
+    font-weight: bolder;
+    color: #45a049;
+
+}
 .image-section {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 2rem;
 }
 
 .image-section img {
@@ -48,10 +62,13 @@ label, select {
 
 button {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
-    border: none;
+    border-color: #45a087;
+    border-radius: 8px;
     cursor: pointer;
+    box-shadow:  2px 2px #4caf50;
+    
 }
 
 button:hover {
@@ -59,10 +76,12 @@ button:hover {
 }
 
 .plant {
-    border: 1px solid #ccc;
+    border: 1px solid #45a049;
     padding: 10px;
     margin: 10px;
     width: calc(100% - 22px); /* Adjust width based on padding and border */
+    border-radius: 8px;
+    
 }
 
 .plant img {

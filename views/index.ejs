@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GreenStuff</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet"  type="text/css" href="/style.css">
 </head>
 <body>
     <div class="container">
@@ -40,7 +40,7 @@
                         <select name='water_schedule' id='water_schedule'>
                             <option value='frequent'>It's a thirsty boi!</option>
                             <option value='average' selected>Just sometimes.</option>
-                            <option value='minimum'>I'm liekly to forget.</option>
+                            <option value='minimum'>I'm likely to forget.</option>
                         </select>
                     </div>
                     <div class="question" >
@@ -52,18 +52,23 @@
                             <option value='part_shade'>A healthy balance.</option>
                         </select>
                     </div>
+                
                     <button type="submit">Search</button>
+
             </form>
+
         </div>
+    </div>
         <div class="image-section">
             <!-- Did we get something back from the server?  -->
             <% if (plants !== null)  { %> 
                 <!-- Did we get someth ing back from the server, and the length of the results is greater than 0? -->
                 <% if (plants.length > 0) { %>  
-<!--Then, let's return those results. -->
- <% plants.forEach( plant => {  %> 
-<div class='plant'>
-    <h3> <%= plant.common_name %> (<%= plant.scientific_name.join(',') %>)</h3>
+        <!--Then, let's return those results. -->
+        <% plants.forEach( plant => {  %> 
+        <div class='plant'>
+    <h3> <%= plant.common_name %> </h3>
+    <p>(<%= plant.scientific_name.join(',') %>)</p>
     <% if (plant.default_image ) { %> 
     <img src="<%= plant.default_image.small_url %>" alt="<%=plant.common_name %>" >
     <% } else { %> 
@@ -73,16 +78,17 @@
     <p>Watering Requirements: <%= plant.watering %></p>
     <p>Sunlingth Requirements: <%= plant.sunlight.join(', ') %></p>
 
-</div>
-<% }); %>
-           <%} else { %> 
-            <p> <%=message %></p>
-          <% } %>
-            <%} else { %> 
-                <!-- No response from the server, so show the default image. -->
-            <img src="images/empty_pot.jpg" alt="Home!">
-           <% } %>
+            </div>
+                <% }); %>
+                    <%} else { %> 
+                    <p> <%=message %></p>
+                    <% } %>
+                    <%} else { %> 
+                    <!-- No response from the server, so show the default image. -->
+                    <img src="images/empty_pot.jpg" alt="Home!">
+                    <% } %>
+                
+    
         </div>
-    </div>
 </body>
 </html>
