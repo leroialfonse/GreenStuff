@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenStuff</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h1>GreenStuf!</h1>
+            <h2>Grow with confidence. And Help.</h2>
+            <form id='plant-form' action="/getPlants" method="GET">
+                <div class="question" >
+                    <label for="edible">Do you want to eat this?</label>
+                    <select name='edible' id='edible'>
+                        <option value='' selected>No answer</option>
+                        <option value='yes'>Yes!</option>
+                        <option value='no'>No</option>
+                    </select>
+                    <div class="question">
+                        <label for="pets_kids">Safe for pets and/or kids?</label>
+                        <select name='pets_kids' id='pets_kids'>
+                            <option value='' selected>No answer</option>
+                            <option value='yes'>Yes!</option>
+                            <option value='no'>No</option>
+                        </select>
+                    </div>
+                    <div class="question" >
+                        <label for="lifespan">How long would you like it to live?</label>
+                        <select name='lifespan' id='lifespan'>
+                            <option value='' selected>No answer</option>
+                            <option value='perennial'>As long as possible- it's a perennial!</option>
+                            <option value='annual'>Just want to appreciate it for a while - it's an annual.</option>
+                        </select>
+                    </div>
+                    <div class="question" >
+                        <label for="water_schedule">How often should you water?</label>
+                        <select name='water_schedule' id='water_schedule'>
+                            <option value='frequent'>It's a thirsty boi!</option>
+                            <option value='average' selected>Just sometimes.</option>
+                            <option value='minimum'>I'm liekly to forget.</option>
+                        </select>
+                    </div>
+                    <div class="question" >
+                        <label for="sunlight">How much sunlight should it get?</label>
+                        <select name='sunlight' id='sunlight'>
+                            <option value='' selected>No answer</option>
+                            <option value='full_sun'>Full sun is best.</option>
+                            <option value='full_shade'>Full shade, please.</option>
+                            <option value='part_shade'>A healthy balance.</option>
+                        </select>
+                    </div>
+                    <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="image-section">
+            <!-- Did we get something back from the server?  -->
+            <% if (plants !== null)  { %> 
+                <!-- Did we get someth ing back from the server, and the length of the results is greater than 0? -->
+                <% if (plants.length > 0) { %>  
+<!--Then, let's return those results. -->
+ <% plants.forEach( plant => {  %> 
+<div class='plant'>
+    <h3> <%= plant.common_name %> (<%= plant.scientific_name.join(',') %>)</h3>
+    <% if (plant.default_image ) { %> 
+    <img src="<%= plant.default_image.small_url %>" alt="<%=plant.common_name %>" >
+    <% } else { %> 
+        <img src="images/placeholder_plant.jpg" alt="Default">
+        <% } %>
+    <p>Lifecycle: <%= plant.cycle %></p>
+    <p>Watering Requirements: <%= plant.watering %></p>
+    <p>Sunlingth Requirements: <%= plant.sunlight.join(', ') %></p>
+
+</div>
+<% }); %>
+           <%} else { %> 
+            <p> <%=message %></p>
+          <% } %>
+            <%} else { %> 
+                <!-- No response from the server, so show the default image. -->
+            <img src="images/empty_pot.jpg" alt="Home!">
+           <% } %>
+        </div>
+    </div>
+</body>
+</html>
