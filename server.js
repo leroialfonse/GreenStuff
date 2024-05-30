@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 8000
 // set the view engine..
 app.set('view engine', 'ejs');
 
-app.use(express.static('public/'));
+app.use(express.static('public'));
 
 // A function to shuffle an array to get different values.
 function shuffleArray(array) {
