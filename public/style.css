@@ -4,6 +4,23 @@ body, html {
     font-family: Arial, sans-serif;
 }
 
+header{
+    display:flex;
+    flex-direction: row;
+    height: 4rem;
+    border-bottom: 1.75rem solid #45a049;
+}
+nav{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+nav > ul {
+    list-style-type: none;
+
+}
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
